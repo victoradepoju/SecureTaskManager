@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.victor</groupId>
 	<artifactId>spring-security-project</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.0</version>
 	<name>spring-security-project</name>
 	<description>Spring security practice</description>
 	<properties>
