@@ -11,7 +11,7 @@ FROM amazoncorretto:17
 
 # define few things
 ARG PROFILE=dev
-ARG APP_VERSION=1.0.1
+ARG APP_VERSION=1.0.2
 
 WORKDIR /app
 COPY --from=build /build/target/spring-security-project-*.jar /app/
