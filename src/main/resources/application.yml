@@ -4,9 +4,9 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring-security-db
-    username: demo
-    password: demo
+    url: jdbc:postgresql://dpg-cppd3l2j1k6c73eh5fb0-a:5432/secure_task_manager_database
+    username: secure_task_manager_database_user
+    password: xRAk4QXapLElBBhoWwSmK6WxXNbbtNDX
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
