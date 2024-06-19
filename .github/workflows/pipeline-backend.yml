@@ -1,0 +1,91 @@
+#name: SSP Backend API Pipeline
+#
+#on:
+#  push:
+#    branches:
+#      - ci/pipeline
+#    paths:
+#      - spring-security-project/**
+#
+#jobs:
+#  compile:
+#    runs-on: ubuntu
+#    name: Compile project
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Setup JDK
+#        uses: actions/setup-jdk@v4
+#        with:
+#          java-version: 17
+#          distribution: 'corretto'
+#
+#      - name: Compile project
+#        run: |
+#          ./mvnw clean compile
+#
+#
+#  unit-tests:
+#    runs-on: ubuntu
+#    name: Unit tests
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Setup JDK
+#        uses: actions/setup-jdk@v4
+#        with:
+#          java-version: 17
+#          distribution: 'corretto'
+#
+#      - name: Running unit Tests
+#        run: |
+#          ./mvnw clean test
+#
+#
+#  build:
+#    runs-on: ubuntu
+#    name: Build backend
+#    needs: [compile, unit-tests]
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Setup JDK
+#        uses: actions/setup-jdk@v4
+#        with:
+#          java-version: 17
+#          distribution: 'corretto'
+#
+#      - name: Build project
+#        run: |
+#          ./mvnw clean package
+#
+#
+#  build-image:
+#    name: Build Docker image
+#    runs-on: ubuntu
+#    needs: [build]
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Setup JDK
+#        uses: actions/setup-jdk@v4
+#        with:
+#          java-version: 17
+#          distribution: 'corretto'
+#
+#      - name: Extract project version
+#        id: extract_version
+#        run: |
+#          echo "VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT

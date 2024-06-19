@@ -42,6 +42,10 @@ public class AuthenticationService {
 
     public void registerUser(RegisterRequest registerRequest) throws MessagingException {
 
+        if (userRepository.findByEmail(registerRequest.email()).isPresent()) {
+            throw new EmailAlreadyExistsException("Email already exists");
+        }
+        
         var userRole = roleRepository.findByName("USER")
                 // TODO: better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initialized"));
@@ -107,7 +111,7 @@ public class AuthenticationService {
         var adminRole = roleRepository.findByName("ADMIN")
                 // TODO: better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initialized"));
-
+        // or DataIntegrityViolationException error
 
         User user = User.builder()
                 .firstName(registerRequest.firstname())
@@ -118,14 +122,7 @@ public class AuthenticationService {
                 .role(adminRole)
                 .build();
 
-        // catch email already exists error and throw DataIntegrityViolationException
-        // then add this exception to the GlobalExceptionHandler
-
-//        try {
             userRepository.save(user);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     @Transactional

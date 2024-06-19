@@ -50,7 +50,7 @@ public class EmailService {
         helper.setTo(to);
         helper.setSubject(subject);
 
-        String template = templateEngine.process(emailTemplate.name(), context);
+        String template = templateEngine.process(emailTemplate.getName(), context);
 
         helper.setText(template, true);
 

@@ -21,6 +21,15 @@ services:
     ports:
       - 1080:1080
       - 1025:1025
+  ssp-api:
+    container_name: ssp-api
+    image: ssp/ssp:1.0.2
+    ports:
+      - 8088:8088
+    networks:
+      - spring-demo
+    depends_on:
+      - postgres
 
 
 networks:
