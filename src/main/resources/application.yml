@@ -33,7 +33,7 @@ spring:
     protocol: smtp
 
 server:
-  port: 8088
+  port: 8080
 
 rsa:
   privateKey: classpath:certs/private.pem
