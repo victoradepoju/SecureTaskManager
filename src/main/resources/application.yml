@@ -4,9 +4,9 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://viaduct.proxy.rlwy.net:21443/railway
+    url:
     username: postgres
-    password: DOGiKblEmcKOaNMmzLuldaAYrvAPRrLw
+    password:
 #    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
