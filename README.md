@@ -33,7 +33,7 @@ SecureTaskManager is a comprehensive task management application designed with a
 
 1. Clone the repository
     ```bash
-    git clone https://github.com/yourusername/SecureTaskManager.git
+    git clone https://github.com/victoradepoju/SecureTaskManager.git
     cd SecureTaskManager
     ```
 2. Configure the database in `application.yml`
